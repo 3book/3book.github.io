@@ -1,38 +1,29 @@
-/* global hexo */
-
 'use strict';
 
 const { htmlTag } = require('hexo-util');
-const url = require('url');
+const { parse } = require('url');
 
-hexo.extend.helper.register('next_url', function(path, text, options) {
-  const { config } = this;
-  var data = url.parse(path);
-  var siteHost = url.parse(config.url).hostname || config.url;
+module.exports = function(path, text, options = {}) {
+  const { config, theme } = this;
+  const data = parse(path);
+  const siteHost = parse(config.url).hostname || config.url;
 
-  var theme = hexo.theme.config;
-  var exturl = '';
-  var tag = 'a';
-  var attrs = { href: this.url_for(path) };
+  let exturl = '';
+  let tag = 'a';
+  let attrs = { href: this.url_for(path) };
 
   // If `exturl` enabled, set spanned links only on external links.
   if (theme.exturl && data.protocol && data.hostname !== siteHost) {
     tag = 'span';
     exturl = 'exturl';
-    var encoded = Buffer.from(path).toString('base64');
+    const encoded = Buffer.from(path).toString('base64');
     attrs = {
       class     : exturl,
       'data-url': encoded
     };
   }
 
-  options = options || {};
-
-  var keys = Object.keys(options);
-  var key = '';
-
-  for (var i = 0, len = keys.length; i < len; i++) {
-    key = keys[i];
+  for (const key in options) {
 
     /**
      * If option have `class` attribute, add it to
@@ -43,10 +34,6 @@ hexo.extend.helper.register('next_url', function(path, text, options) {
     } else {
       attrs[key] = options[key];
     }
-  }
-
-  if (attrs.class && Array.isArray(attrs.class)) {
-    attrs.class = attrs.class.join(' ');
   }
 
   // If it's external link, rewrite attributes.
@@ -63,5 +50,5 @@ hexo.extend.helper.register('next_url', function(path, text, options) {
     }
   }
 
-  return htmlTag(tag, attrs, text, false);
-});
+  return htmlTag(tag, attrs, decodeURI(text), false);
+};
