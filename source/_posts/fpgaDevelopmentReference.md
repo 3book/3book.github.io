@@ -1,16 +1,17 @@
 ---
 title: fpga 开发参考
-tags: tools
+tags: fpga,verilog,SystemVerilog
 ---
-
 
 ## verilog
 
 [IEEE Std 1364™-2005](https://standards.ieee.org/standard/1364-2005.html)
 [IEEE Std 1364™-2001](https://standards.ieee.org/standard/1364-2001.html)
 
-[2005]http://staff.ustc.edu.cn/~songch/download/IEEE.1364-2005.pdf
-[2001]https://sutherland-hdl.com/pdfs/verilog_2001_ref_guide.pdf
+[2005](http://staff.ustc.edu.cn/~songch/download/IEEE.1364-2005.pdf)
+[2001](https://sutherland-hdl.com/pdfs/verilog_2001_ref_guide.pdf)
+
+[asic-world](http://www.asic-world.com/verilog/index.html)
 
 ## SystemVerilog
 
@@ -20,6 +21,7 @@ tags: tools
 
 [chipverify](https://www.chipverify.com/)
 [verificationguide](https://verificationguide.com/)
+[asic-world](http://www.asic-world.com/systemverilog/index.html)
 
 ## github
 
@@ -27,3 +29,13 @@ https://github.com/Vitorian/awesome-fpga
 https://github.com/clin99/awesome-eda
 http://www.asic-world.com/verilog/tools.html
 https://github.com/TM90/awesome-hwd-tools
+
+## tools
+
+### Editor
+
+#### Visual Studio Code
+[Visual Studio Code](https://code.visualstudio.com/)
+[Verilog HDL/SystemVerilog](https://marketplace.visualstudio.com/items?itemName=mshr-h.VerilogHDL)
+
+#### 
